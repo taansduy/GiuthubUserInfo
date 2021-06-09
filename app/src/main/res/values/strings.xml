@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GithubUserInfo</string>
+    <string name="get_info">GET INFO</string>
+    <string name="see_list_followers">SEE LIST FOLLOWERS</string>
+</resources>

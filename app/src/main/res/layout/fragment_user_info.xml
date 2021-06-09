@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.githubuserinfo.model.UserInfo" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAvatar"
+            avatar="@{user.avatar_url}"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="48dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
+            style="@style/AppTheme.Text"
+            android:layout_marginTop="16dp"
+            android:text="@{user.name}"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivAvatar"
+            tools:text="Võ Tấn Duy" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBio"
+            style="@style/AppTheme.Text"
+            android:layout_marginTop="8dp"
+            android:singleLine="false"
+            android:text="@{user.bio}"
+            android:textAlignment="center"
+            android:textColor="@color/secondaryText"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            tools:text="Mobile Developer" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvInfo"
+            style="@style/AppTheme.Text"
+            android:layout_marginTop="8dp"
+            android:text="@{user.followers +` follower(s) • ` + user.following +` following(s) • `+user.public_repos +` repositories`}"
+            android:textAlignment="center"
+            android:textColor="@color/secondaryText"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBio"
+            tools:text="Mobile Developer" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSeeMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/see_list_followers"
+            android:visibility="@{user.followers==null || user.followers==0 ? View.GONE: View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvInfo" />
+
+        <com.example.githubuserinfo.view.widget.ResultScreen
+            android:id="@+id/resultScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
